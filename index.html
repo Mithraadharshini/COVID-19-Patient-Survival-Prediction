@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Survival Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #000;">
+ <div class="login">
+	<h1>Patient Survival Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	
+        <input type="text" name="Name" placeholder="Name" required="required" />
+        <input type="text" name="Age" placeholder="Age" required="required" />
+        <input type="number" name="BMI" placeholder="BMI" required="required" />
+        <input type="text" name="elective_surgery" placeholder="elective_surgery  0 - No, 1 - Yes" required="required" />
+        <input type="text" name="apache_2_diagnosis" placeholder="The APACHE II diagnosis for the ICU admission" required="required" />
+        <input type="text" name="apache_3j_diagnosis" placeholder=" sub-diagnosis code which best describes the reason for the ICU admission" required="required" />
+        <input type="text" name="arf_apache" placeholder="Whether the patient had acute renal failure during the first 24 hours   0 - No, 1 - Yes" required="required" />
+        <input type="number" name=" bun_apache" placeholder="The blood urea nitrogen concentration measured during the first 24 hours  IN mmol/L" required="required" />
+        <input type="text" name="creatinine_apache" placeholder="creatinine concentration" required="required" />
+        <input type="number" name="gcs_unable_apache" placeholder="Glasgow Coma Scale was unable to be assessed due to patient sedation  0 - No, 1 - Yes" required="required" />
+        <input type="number" name="gcs_verbal_apache" placeholder="verbal component of the Glasgow Coma Scale" required="required" />
+        <input type="text" name="glucose_apache" placeholder=" glucose concentration" required="required" />
+        <input type="text" name="intubated_apache" placeholder="Whether the patient was intubated at the time of the highest scoring arterial blood gas used in the oxygenation score" required="required" />
+        <input type="text" name="map_apache" placeholder="mean arterial pressure" required="required" />
+        <input type="text" name="resprate_apache" placeholder=" respiratory rate" required="required" />
+        <input type="text" name=" hepatic_failure" placeholder="Whether the patient has cirrhosis and additional complications including jaundice and ascites, upper GI bleeding, hepatic encephalopathy, or coma. 0 - No, 1 - Yes" required="required" />
+        <input type="text" name="aids" placeholder="Whether the patient has aids .  0 - No, 1 - Yes" required="required" />
+        <input type="text" name="diabetes_mellitus" placeholder="Whether the patient has been diagnosed with diabetes.  0 - No, 1 - Yes" required="required" />
+        <input type="text" name="cirrhosis" placeholder="Whether the patient has a history of heavy alcohol use with portal hypertension and varices.  0 - No, 1 - Yes" required="required" />
+        <input type="text" name="lymphoma" placeholder="Whether the patient has been diagnosed with non-Hodgkin lymphoma.   0 - No, 1 - Yes" required="required" />
+        <input type="text" name="immunosuppression" placeholder="Whether the patient has their immune system suppressed" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predictwhether the person will survive or not</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+</html>
